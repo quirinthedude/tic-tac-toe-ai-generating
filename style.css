@@ -13,7 +13,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 70vh;
 }
 
 table {
@@ -54,4 +54,29 @@ td:first-child {
 
 td:last-child {
   border-right: none;
+}
+
+.reset {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.reset-button {
+  padding: 12px 32px;
+  border: 2px solid white;
+  border-radius: 12px;
+  background: transparent;
+  color: white;
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 150ms ease-in-out;
+}
+
+.reset-button:hover {
+  background: #00b0ff;
+  color: #111;
+  border-color: #ffcc00;
 }
