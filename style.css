@@ -1,0 +1,57 @@
+body {
+  margin: 0;
+  background-color: #111;
+  font-family: 'Open Sans', Arial, sans-serif;
+  color: white;
+}
+
+h1 {
+  text-align: center;
+}
+
+#content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td {
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 48px;
+  font-weight: bold;
+  cursor: pointer;
+  border: 5px solid white;
+}
+
+td:hover {
+  background-color: #333;
+}
+
+td svg {
+    display: block;
+    margin: auto;
+}
+
+tr:first-child td {
+  border-top: none;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+td:first-child {
+  border-left: none;
+}
+
+td:last-child {
+  border-right: none;
+}
