@@ -80,3 +80,39 @@ td:last-child {
   color: #111;
   border-color: #ffcc00;
 }
+
+.board-wrapper {
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
+
+.result-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50vw;
+  min-width: 320px;
+  transform: translate(-50%, -50%);
+
+  text-align: center;
+  font-size: clamp(32px, 6vw, 72px);
+  font-weight: 800;
+  font-family: 'Open Sans', Arial, sans-serif;
+
+  z-index: 5;
+  pointer-events: none;
+  text-shadow: 0 0 12px #111;
+}
+
+.result-circle {
+  color: #00b0ff;
+}
+
+.result-cross {
+  color: #ffcc00;
+}
+
+.result-draw {
+  color: white;
+}

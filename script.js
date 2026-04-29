@@ -2,6 +2,7 @@ let field = [null, null, null, "Kreis", null, null, "Kreuz", null, null];
 let lastChangedIndex = null;
 let currentPlayer = "Kreis";
 let winningLine = null;
+let gameResult = null;
 
 function init() {
   render();
@@ -45,15 +46,23 @@ function render() {
   if (winningLine) {
     lineSvg = getWinningLineSvg(winningLine);
   }
+
+  let resultOverlay = getGameResultOverlay();
+
   content.innerHTML = `
 <div style="position: relative; width: 300px; height: 300px;">
   ${html}
   ${lineSvg}
+  ${resultOverlay}  
 </div>
 `;
 }
 
 function setField(index) {
+  if (gameResult !== null) {
+    return;
+  }
+  
   if (field[index] !== null) {
     return;
   }
@@ -92,10 +101,12 @@ function checkGameOver() {
     let [a, b, c] = line;
     if (field[a] && field[a] === field[b] && field[a] === field[c]) {
       winningLine = line;
+      gameResult = field[a];
       return field[a]; // Gewinner zurückgeben
     }
 
     if (field.every((cell) => cell !== null)) {
+      gameResult = "Unentschieden";
       return "Unentschieden"; // Unentschieden
     }
   }
@@ -108,8 +119,28 @@ function resetGame() {
   currentPlayer = 'Kreis';
   lastChangedIndex = null;
   winningLine = null;
-
+  gameResult = null;
   render();
+}
+
+function getGameResultOverlay() {
+  if (gameResult === null) {
+    return '';
+  }
+
+  if (gameResult === 'Unentschieden') {
+    return `
+      <div class="result-overlay result-draw">
+        Unentschieden
+      </div>
+    `;
+  }
+
+  return `
+    <div class="result-overlay ${gameResult === 'Kreis' ? 'result-circle' : 'result-cross'}">
+      ${gameResult} hat gewonnen
+    </div>
+  `;
 }
 
 function getCrossSvg(shouldAnimate) {
